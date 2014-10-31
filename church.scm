@@ -3,7 +3,7 @@
   (lambda (x) x)
 )
 
-; bools
+; booleans
 (define (true x y) x)
 (define (false x y) y)
 
@@ -18,7 +18,7 @@
 ; data
 (define (cons x y)
   (lambda (m) (m x y))
-)   
+)
 (define (head z)
   (z true)
 )
@@ -44,25 +44,21 @@
     (lambda (x)
       (f (f (f x))))))
 
-; arithmetic
-(define (dbg x) (display "o"))
-
-; n++
-(define (successor n)
+; successor
+(define (succ n)
   (lambda (f x)
     (f (n f x)))
 )
 
-; m+n
+; addition
 (define (add m n)
   (lambda (f)
     (lambda (x)
       (((m)f)x) (((n)f)x)))
 )
 
-; m^n
+; exponentiation
 (define (exp m n)
   (lambda (f)
     (lambda (x)
       ((((n)(m))f)x))))
-
