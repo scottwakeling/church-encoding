@@ -26,20 +26,24 @@
   (z false)
 )
 
+; debug
+;  e.g. (((mul-church two three) inc) 0) = 6
+(define (inc n) (+ n 1))
+
 ; naturals
-(define (zero)
+(define zero
   (lambda (f)
     (lambda (x)
       x)))
-(define (one)
+(define one
   (lambda (f)
     (lambda (x)
       (f x))))
-(define (two)
+(define two
   (lambda (f)
     (lambda (x)
       (f (f x)))))
-(define (three)
+(define three
   (lambda (f)
     (lambda (x)
       (f (f (f x))))))
@@ -47,18 +51,22 @@
 ; successor
 (define (succ n)
   (lambda (f x)
-    (f (n f x)))
-)
+    (f (n f x))))
 
 ; addition
-(define (add m n)
+(define (add-church m n)
   (lambda (f)
     (lambda (x)
-      (((m)f)x) (((n)f)x)))
-)
+      ((m f) ((n f)x)))))
+
+; multiplication
+(define (mul-church m n)
+  (lambda (f)
+    (lambda (x)
+      ((m (n f))x))))
 
 ; exponentiation
-(define (exp m n)
+(define (exp-church m n)
   (lambda (f)
     (lambda (x)
       ((((n)(m))f)x))))
