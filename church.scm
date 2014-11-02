@@ -1,3 +1,5 @@
+#lang scheme
+
 ; identity
 (define (i)
   (lambda (x) x)
@@ -7,12 +9,22 @@
 (define (true x y) x)
 (define (false x y) y)
 
-; predicates
+; logical operations
 (define (if cnd cns alt)
   (cnd cns alt)
 )
 (define (and cnda cndb)
   (cnda cndb cnda)
+)
+(define (or cnda cndb)
+  (cnda true cndb)
+)
+(define (not cond)
+  (cond false true)
+)
+(define zero?
+  (lambda (f)
+    ((f (lambda (x) false)) true))
 )
 
 ; data
