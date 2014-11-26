@@ -43,6 +43,7 @@
 (define (inc n) (+ n 1))
 
 ; naturals
+;  e.g. ((n inc) 1)
 (define zero
   (lambda (f)
     (lambda (x)
@@ -59,6 +60,11 @@
   (lambda (f)
     (lambda (x)
       (f (f (f x))))))
+
+(define (compose f g)
+  (lambda (x)
+    (f (g x))))
+
 
 ; successor
 (define (succ n)
@@ -82,3 +88,38 @@
   (lambda (f)
     (lambda (x)
       ((((n)(m))f)x))))
+
+; predecessor
+;  PRED := λnfx.n (λgh.h (g f)) (λu.x) (λu.u)
+;  e.g. (((predecessor two) inc) 0) = 1
+(define predecessor
+  (lambda (n)
+    (lambda (f)
+      (lambda (x)
+
+      )
+    )
+  )
+)
+
+; (λgh.h (g f)) = 
+; (λu.x) = (lambda (u) x)
+; (λu.u) = (lambda (u) u)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
