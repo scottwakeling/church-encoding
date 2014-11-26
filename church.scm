@@ -92,23 +92,16 @@
 ; predecessor
 ;  PRED := λnfx.n (λgh.h (g f)) (λu.x) (λu.u)
 ;  e.g. (((predecessor two) inc) 0) = 1
+
+; (λgh.h (g f)) = (lambda (g) (lambda (h) (h (g f))))
+; (λu.x) = (lambda (u) x)
+; (λu.u) = (lambda (u) u)
+
 (define predecessor
   (lambda (n)
     (lambda (f)
       (lambda (x)
-
-      )
-    )
-  )
-)
-
-; (λgh.h (g f)) = 
-; (λu.x) = (lambda (u) x)
-; (λu.u) = (lambda (u) u)
-
-
-
-
+	(((n (lambda (g) (lambda (h) (h (g f))))) (lambda (u) x)) (lambda (u) u))))))
 
 
 
